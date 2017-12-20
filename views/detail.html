@@ -3,7 +3,10 @@
   <div id="evoTab"  class="container-fluid">
 
     <h3>Evolution Chart</h3>
-
+    <div class="col-md-3" ng-repeat="pokemon in pEvoList">
+      <img src="{{pokemon.img}}">
+      <h4>{{pokemon.name}}<span>({{pokemon.height}}, {{pokemon.weight}}, {{pokemon.spawn_time}})</span></h4>
+    </div>
     <div class="col-md-3">
       <img src="{{pokelist.img}}">
       <h4>{{pokelist.name}}<span>({{pokelist.height}}, {{pokelist.weight}}, {{pokelist.spawn_time}})</span></h4>

@@ -85,9 +85,11 @@ pokedex.controller("detail",function($scope,$routeParams,$http){
 	$http.get("/db/pokedexdataset.json")
 	.then(function(response){
 		var list = response.data.pokemon
-		console.log("here it comes")
+		$scope.pokelist = list[$routeParams.id-1]
 		$scope.nEvoList=[]
-		
+		$scope.pEvoList=[]
+
+
 		for(var i=0;i<list[$routeParams.id-1].next_evolution.length;i++){
 			for(j=0;j<list.length;j++){
 				if(list[$routeParams.id-1].next_evolution[i].num == list[j].num){
@@ -95,10 +97,16 @@ pokedex.controller("detail",function($scope,$routeParams,$http){
 				}
 			}
 		}
-		console.log($scope.nEvoList)
-		$scope.pokelist = list[$routeParams.id-1]
-		console.log($scope.pokelist)
-		// document.getElementById('test').innerHTML="hello"+ $scope.pokelist.next_evolution[0].name;
+
+		for(var i=0;i<list[$routeParams.id-1].prev_evolution.length;i++){
+			for(j=0;j<list.length;j++){
+				if(list[$routeParams.id-1].prev_evolution[i].num == list[j].num){
+					$scope.pEvoList.push(list[j])
+				}
+			}
+		}
+
+
 	},function(xhr){
 		console.log(xhr)
 	})
