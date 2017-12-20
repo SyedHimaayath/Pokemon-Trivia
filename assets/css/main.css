@@ -1,0 +1,161 @@
+*{
+  margin: 0px;
+  padding: 0px;
+}
+body{
+  min-height: 100vh;
+  width:100%;
+  background: linear-gradient(to bottom right,black,red);
+  font-family: sans-serif;
+  color: white;
+  /*background-image: url(http://pm1.narvii.com/6438/23dc8cda3c36ff6b08fec2aa701586626ada4834_hq.jpg);
+  background-position:center;
+  background-repeat: no-repeat;
+  background-size:contain;*/
+}
+.home{
+  padding-top:7vh;
+}
+.dCard{
+  border:0.5px solid black;
+  margin:5px;
+  border-radius: 5px;
+  background-color: ghostwhite;
+  padding-right: 0;
+  padding:10px;
+}
+.dc-img{
+  margin:0;
+}
+.dc-img img{
+  height:130px;
+  width: 130px;
+  padding: 0px;
+}
+.dc-name{
+  margin-left: 0px;
+}
+.dc-name h3{
+  margin-top: 5px;
+  font-weight: bold;
+  margin-bottom: 0px;
+}
+.dc-name h3 a{
+  color: white;
+}
+.lpane{
+  padding-left: 0px;
+}
+table{
+  color: white;
+  text-align: center;
+  margin-bottom:20px;
+}
+tr{
+  border-bottom: 1px solid black;
+  background-color: rgba(0,0,0,0.2);
+}
+tr :hover{
+  background-color: rgba(0,0,0.3)
+}
+td{
+  padding: 10px;
+}
+.input-wrapper .detail{
+  padding:6px;
+  border-radius:5px;
+}
+.search-bar{
+  text-align: center;
+  margin-bottom: 5vh;
+  color: black;
+}
+.one{
+  padding-top: 15px;
+}
+.oneD{
+  padding:5px;
+}
+.lpane{
+  padding-top:15px;
+  padding-bottom: 10px;
+}
+.list-headers{
+  font-weight: bold;
+}
+.navbar{
+  margin-bottom: 0px;
+  background-color:ghostwhite;
+}
+.navbar-header .navbar-brand{
+  font-family: 'Indie Flower', cursive;
+  font-family: 'Acme', sans-serif;
+  font-size: 26px;
+}
+.p-name{
+  font-weight: bold;
+  font-size: 18px;
+}
+.p-name a{
+  color: white;
+}
+
+#bg2{
+  position: fixed;
+  right:0px;
+  bottom:0px;
+  z-index:-1;
+}
+#evoTab{
+  text-align: center;
+}
+
+@media(min-width:1200px){
+  .dCard{
+    display: none;
+  }
+}
+
+@media(min-width:768px){
+  .dCard{
+    display: none;
+  }
+}
+@media(max-width:576px) {
+  h5{
+    padding-top: 3px;
+    padding-bottom: 3px;
+    padding-left:0px;
+    padding-right:0px;
+    background-color: rgba(255,0,0, 0.1);
+  }
+  #dbtb{
+    display: none;
+  }
+  .dCard{
+    min-height:75vh;
+    text-align: center;
+    background-color: rgba(0,0,0,0.7);
+    padding:0px;
+    padding-top: 5px;
+  }
+  .dc-img{
+    margin:0px auto;
+    padding: 0px;
+  }
+  .dc-img img{
+    height: 30vh;
+    width:30vh;
+    margin: 0px;
+    padding: 0px;
+  }
+  .dc-name{
+    color: white;
+    padding-bottom: 5px;
+  }
+  .dc-name h4{
+    font-weight: bold;
+    padding:10px;
+    color: white;
+  }
+}

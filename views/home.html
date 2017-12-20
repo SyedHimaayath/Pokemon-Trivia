@@ -1,0 +1,111 @@
+<div ng-controller="home" class="container home">
+  <div class="col-md-12 col-xs-12 search-bar">
+				<form>
+					<div class="input-wrapper">
+						<input type="text" class="detail col-md-10 col-xs-8" placeholder="Search..." ng-model="query">
+            <button type="submit" class="btn btn-default">Search</button>
+          </div>
+				</form>
+		</div>
+  <div class="col-xs-12 dCard" ng-repeat="pokemon in pokemonlist| limitTo:10|filter:query">
+    <div class="col-xs-12">
+    <div class="col-xs-6 dc-img">
+      <img src="{{pokemon.img}}">
+
+    </div>
+    <div class="col-xs-6 dc-name">
+      <h3><a ng-href="#!/details/{{pokemon.id}}">{{pokemon.name}}</a></h3>
+      <small ng-repeat="type in pokemon.type" class="oneD"> {{type}} </small>
+    </div>
+    <div class="col-xs-3">
+      <h4>{{pokemon.height}}</h4><h5>height</h5>
+    </div>
+    <div class="col-xs-3">
+      <h4>{{pokemon.weight}}</h4><h5>weight</h5>
+    </div>
+    <div class="col-xs-3">
+      <h3>{{pokemon.spawn_chance}}</h3><h5>spawn</h5>
+    </div>
+    <div class="col-xs-3">
+      <h3>{{pokemon.avg_spawns}}</h3><h5>avg.</h5>
+    </div>
+  </div>
+
+  <div class="col-xs-12 one">
+    <div class="col-xs-6 oneD">
+      <h4>{{pokemon.candy}}</h4><h5>candy</h5>
+    </div>
+    <div class="col-xs-6 oneD">
+      <h4>{{pokemon.candy_count}}</h4><h5>Candy Count</h5>
+    </div>
+    <div class="col-xs-6 oneD">
+      <h4>{{pokemon.egg}}</h4><h5>egg</h5>
+    </div>
+    <div class="col-xs-6 oneD">
+      <h4>{{pokemon.spawn_time}}</h4><h5>spawntime</h5>
+    </div>
+  </div>
+    <div class="col-xs-12 lpane">
+      <div class="col-xs-6" ng-show="{{pokemon.prev_evolution}}">
+        <h5 ng-repeat="pName in pokemon.prev_evolution">
+          previous evolution : {{pName.name}}
+        </h5>
+
+      </div>
+      <div class="col-xs-6" ng-show="{{pokemon.next_evolution}}">
+        <h4 ng-repeat="nName in pokemon.next_evolution">
+           {{nName.name}}
+        </h4>
+          <h5>next evolution</h5>
+      </div>
+      <div class="col-xs-6" >
+        <h4 ng-repeat="wName in pokemon.weaknesses">
+          {{wName}}
+        </h4>
+        <h5>weaknesses</h5>
+      </div>
+    </div>
+  </div>
+
+  <table id="dbtb" class=" col-md-12 ">
+    <small>( click on the pokemon name for more )*</small>
+                <thead class="list-headers">
+                <tr>
+                    <td class="number"></td>
+                    <td> Name </td>
+                    <td> Type </td>
+                    <td> Height </td>
+                    <td> Weight </td>
+                    <td> SpawnChance </td>
+                    <td> AvgSpawns </td>
+                    <td> SpawnTime </td>
+                    <td> Weaknesses </td>
+                    <td> Egg </td>
+                    <td> Candy </td>
+                    <td> CandyCount </td>
+                    <td> Evolution </td>
+                </tr>
+                </thead>
+                <tbody>
+                    <tr class="pok" ng-repeat="pokemon in pokemonlist|limitTo:10|filter:query">
+                        <td class="p-img"><img src="{{pokemon.img}}"></td>
+                        <td class="p-name"><a ng-href="#!/details/{{pokemon.id}}">{{pokemon.name}}</a></td>
+                        <td class="p-type"><p ng-repeat="type in pokemon.type">{{type}}</p></td>
+                        <td class="p-height">{{pokemon.height}}</td>
+                        <td class="p-weight">{{pokemon.weight}}</td>
+                        <td class="p-spawn">{{pokemon.spawn_chance}}</td>
+                        <td class="p-avg">{{pokemon.avg_spawns}}</td>
+                        <td class="p-spawntime">{{pokemon.spawn_time}}</td>
+                        <td class="p-weakness"><p ng-repeat="weak in pokemon.weaknesses">{{weak}}</p></td>
+                        <td class="p-egg">{{pokemon.egg}}</td>
+                        <td class="p-candy">{{pokemon.candy}}</td>
+                        <td class="p-candycount">{{pokemon.candy_count}}</td>
+                        <td class="p-evol">
+                          <p ng-repeat="pre in pokemon.prev_evolution">previous : {{pre.name}}</p>
+                          <p ng-repeat="next in pokemon.next_evolution">next : {{next.name}}</p>
+                        </td>
+                    </tr>
+                </tbody>
+                </table>
+
+</div>
