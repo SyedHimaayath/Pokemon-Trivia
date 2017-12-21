@@ -19,6 +19,7 @@ pokedex.controller('home',function($scope,$http){
 		var w1 = document.querySelector('#bg2');
 		w1.style.bottom=wScroll*0.25+'px';
 	});
+	$('#myModal').modal('toggle')
 
 	$scope.pokemonlist=[];
   $http.get("/db/pokedexdataset.json")
@@ -41,20 +42,30 @@ pokedex.controller('home',function($scope,$http){
 			}
 
 			justlist=[];
-			function wlist(name,count){
+			function wlist(name,count,img){
 				this.name = name;
 				this.count = count;
+				this.img = img;
 			}
-			$scope.wCountList = justlist;
-			// console.log($scope.wCountList);
+			var wCountList=[]
+			for(i=0;i<justlist.length;i++){
+				for (j = 0; j < (justlist.length - i - 1); j++){
+            if (justlist[j].count <= justlist[j + 1].count){
+                temp = justlist[j]
+                justlist[j] = justlist[j + 1]
+                justlist[j + 1] = temp
+            }
+        }
+			}
+			console.log(justlist)
 
 			for (i = 0; i < $scope.pokemonlist.length; i++) {
 				for (j = 0; j < $scope.pokemonlist[i].weaknesses.length; j++) {
-					checkWeaknessCount($scope.pokemonlist[i].weaknesses[j]);
+					checkWeaknessCount($scope.pokemonlist[i].weaknesses[j],$scope.pokemonlist[i].img);
 				}
 			}
 
-			function checkWeaknessCount(wName){
+			function checkWeaknessCount(wName,img){
 				var count = 1;
 				var flag = 0;
 				for(m=0;m<10;m++){
@@ -67,13 +78,27 @@ pokedex.controller('home',function($scope,$http){
 								}
 							}
 							if(flag!=1){
-								var wset = new wlist(wName,count);
+								var wset = new wlist(wName,count,img);
 								justlist.push(wset);
 							}
 						}
 					}
 				}
 			}
+
+			for(i=0;i<3;i++){
+				wCountList.push(justlist[i]);
+			}
+			$scope.weaknessCount = wCountList
+			// var newList=[]
+			// for(i=0;i<$scope.weaknessCount.length;i++){
+			// 	for(j=0;j<$scope.pokemonlist.length;j++){
+			// 		if($scope.weaknessCount[i].name == $scope.pokemonlist[j].name){
+			//
+			// 		}
+			// 	}
+			// }
+
   	},function(xhr){
   		console.log(xhr)
   	});
@@ -87,7 +112,8 @@ pokedex.controller("detail",function($scope,$routeParams,$http){
 		var list = response.data.pokemon
 		$scope.pokelist = list[$routeParams.id-1]
 		$scope.nEvoList=[]
-		$scope.pEvoList=[]
+		$scope.pokemonlist=[] = list
+		// $scope.pEvoList=[]
 
 
 		for(var i=0;i<list[$routeParams.id-1].next_evolution.length;i++){
@@ -98,13 +124,14 @@ pokedex.controller("detail",function($scope,$routeParams,$http){
 			}
 		}
 
-		for(var i=0;i<list[$routeParams.id-1].prev_evolution.length;i++){
-			for(j=0;j<list.length;j++){
-				if(list[$routeParams.id-1].prev_evolution[i].num == list[j].num){
-					$scope.pEvoList.push(list[j])
-				}
-			}
-		}
+		// this ones for prev_evolution
+		// for(var i=0;i<list[$routeParams.id-1].prev_evolution.length;i++){
+		// 	for(j=0;j<list.length;j++){
+		// 		if(list[$routeParams.id-1].prev_evolution[i].num == list[j].num){
+		// 			$scope.pEvoList.push(list[j])
+		// 		}
+		// 	}
+		// }
 
 
 	},function(xhr){
