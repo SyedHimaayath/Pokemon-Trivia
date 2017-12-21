@@ -13,10 +13,10 @@
 
   <div class="col-xs-12 dCard" ng-repeat="pokemon in pokemonlist| limitTo:10|filter:query">
     <div class="col-xs-12">
+      <a ng-href="#!/details/{{pokemon.id}}">
     <div class="col-xs-6 dc-img">
       <img src="{{pokemon.img}}">
-
-    </div>
+    </div></a>
     <div class="col-xs-6 dc-name">
       <h3><a ng-href="#!/details/{{pokemon.id}}">{{pokemon.name}}</a></h3>
       <small ng-repeat="type in pokemon.type" class="oneD"> {{type}} </small>
@@ -118,7 +118,7 @@
                 </thead>
                 <tbody>
                     <tr class="pok" ng-repeat="pokemon in pokemonlist|limitTo:10|filter:query">
-                        <td class="p-img"><img src="{{pokemon.img}}"></td>
+                        <td class="p-img"><a ng-href="#!/details/{{pokemon.id}}"><img src="{{pokemon.img}}"></a></td>
                         <td class="p-name"><a ng-href="#!/details/{{pokemon.id}}">{{pokemon.name}}</a></td>
                         <td class="p-type"><p ng-repeat="type in pokemon.type">{{type}}</p></td>
                         <td class="p-height">{{pokemon.height}}</td>

@@ -26,7 +26,6 @@ pokedex.controller('home',function($scope,$http){
   .then(function(response){
   		var list = response.data.pokemon;
 			$scope.list2 = list;
-			// console.log($scope.list2)
 			for(i=0;i<list.length;i++){
 				for (j = 0; j < (list.length - i - 1); j++){
             if (list[j].spawn_chance < list[j + 1].spawn_chance){
@@ -90,14 +89,6 @@ pokedex.controller('home',function($scope,$http){
 				wCountList.push(justlist[i]);
 			}
 			$scope.weaknessCount = wCountList
-			// var newList=[]
-			// for(i=0;i<$scope.weaknessCount.length;i++){
-			// 	for(j=0;j<$scope.pokemonlist.length;j++){
-			// 		if($scope.weaknessCount[i].name == $scope.pokemonlist[j].name){
-			//
-			// 		}
-			// 	}
-			// }
 
   	},function(xhr){
   		console.log(xhr)
