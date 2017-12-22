@@ -41,10 +41,9 @@ pokedex.controller('home',function($scope,$http){
 			}
 
 			justlist=[];
-			function wlist(name,count,img){
+			function wlist(name,count){
 				this.name = name;
 				this.count = count;
-				this.img = img;
 			}
 			var wCountList=[]
 			for(i=0;i<justlist.length;i++){
@@ -56,15 +55,14 @@ pokedex.controller('home',function($scope,$http){
             }
         }
 			}
-			console.log(justlist)
 
 			for (i = 0; i < $scope.pokemonlist.length; i++) {
 				for (j = 0; j < $scope.pokemonlist[i].weaknesses.length; j++) {
-					checkWeaknessCount($scope.pokemonlist[i].weaknesses[j],$scope.pokemonlist[i].img);
+					checkWeaknessCount($scope.pokemonlist[i].weaknesses[j]);
 				}
 			}
 
-			function checkWeaknessCount(wName,img){
+			function checkWeaknessCount(wName){
 				var count = 1;
 				var flag = 0;
 				for(m=0;m<10;m++){
@@ -77,7 +75,7 @@ pokedex.controller('home',function($scope,$http){
 								}
 							}
 							if(flag!=1){
-								var wset = new wlist(wName,count,img);
+								var wset = new wlist(wName,count);
 								justlist.push(wset);
 							}
 						}
